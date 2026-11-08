@@ -157,15 +157,15 @@ ________________________________________________________________________________
 - 2.Disconnect the card reader and put the MicroSD card into the RDK x5 board's microSD card slot.
 - 3.Boot up RDK board via USB charging port using a USB adapter (+cable).
 
-### 2. Connect to the RDK X5
+## 2. Connect to the RDK X5
 
-## 1.Booting up RDK os
+### 1.Booting up RDK os
 
 - After booting up the board with RDK os successfully, proceed with [RDK Studio](https://developer.d-robotics.cc/en/rdkstudio?ref=drobotics.ghost.io) software
 - Next, connect the pc with the board via a USB cable connected by the USB quicklink port.
 - Inside RDK Studio, signin with your account and click into <Device & Development> tab and select <Remote Desktop>
 
-## 2.Setting up SSH
+### 2.Setting up SSH
 
 - In OS desktop, select Applications>RDK Configuration, there a terminal window will popup.
 - In the terminal window, use the arrow keys to select <I1 SSH>, press enter and enable the SSH service
