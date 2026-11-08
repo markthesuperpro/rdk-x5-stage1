@@ -41,11 +41,11 @@ Our project approach is to first understand foundational part of our hardware an
 | Component | Model / Specification | Purpose |
 |---|---|---|
 | Development board | D-Robotics RDK X5 | Main computing platform |
-| Storage | [microSD card] | System storage |
-| Camera | [Usb Webcam] | [Camera purpose] |
-| Sensor | [LiDar / N/A] | [Navigation] |
-| Actuator | [Motor - Future goal] | [Movement] |
-| Development PC | [Laptop] | Development and remote access |
+| Storage | microSD card | System storage and Boot Firmware |
+| Camera | Usb Webcam | Video Capture |
+| Sensor | LiDar / N/A | Navigation |
+| Actuator | Motor - Future goal | Movement |
+| Development PC | Laptop | Development and remote access |
 
 ### Hardware Setup
 
