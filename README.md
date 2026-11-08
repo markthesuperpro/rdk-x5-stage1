@@ -150,8 +150,8 @@ rdk-x5-stage1/
 
 ### 1. Prepare the RDK X5
 
-  Download system image via [RDK OS v3.5.0 Image](https://archive.d-robotics.cc/downloads/os_images/rdk_x5/rdk_os_3.5.0-2026-4-9/rdk-x5-ubuntu22-preinstalled-desktop-3.5.0-arm64.img.xz)
-  Download [Rufus](https://rufus.ie/en/)
+- Download system image via [RDK OS v3.5.0 Image](https://archive.d-robotics.cc/downloads/os_images/rdk_x5/rdk_os_3.5.0-2026-4-9/rdk-x5-ubuntu22-preinstalled-desktop-3.5.0-arm64.img.xz)
+- Download [Rufus](https://rufus.ie/en/)
 
 - 1.Boot up rufus and flash the system image downloaded into the MicroSD card attached via the USB MicroSD card reader.
 - 2.Disconnect the card reader and put the MicroSD card into the RDK x5 board's microSD card slot.
