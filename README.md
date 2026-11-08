@@ -150,8 +150,8 @@ rdk-x5-stage1/
 
 ### 1. Prepare the RDK X5
 
-- Download system image via [RDK OS v3.5.0 Image](https://archive.d-robotics.cc/downloads/os_images/rdk_x5/rdk_os_3.5.0-2026-4-9/rdk-x5-ubuntu22-preinstalled-desktop-3.5.0-arm64.img.xz)
-- Download [Rufus](https://rufus.ie/en/)
+  Download system image via [RDK OS v3.5.0 Image](https://archive.d-robotics.cc/downloads/os_images/rdk_x5/rdk_os_3.5.0-2026-4-9/rdk-x5-ubuntu22-preinstalled-desktop-3.5.0-arm64.img.xz)
+  Download [Rufus](https://rufus.ie/en/)
 
 - 1.Boot up rufus and flash the system image downloaded into the MicroSD card attached via the USB MicroSD card reader.
 - 2.Disconnect the card reader and put the MicroSD card into the RDK x5 board's microSD card slot.
@@ -159,140 +159,79 @@ rdk-x5-stage1/
 
 ### 2. Connect to the RDK X5
 
+## 1.Booting up RDK os
+
 - After booting up the board with RDK os successfully, proceed with [RDK Studio](https://developer.d-robotics.cc/en/rdkstudio?ref=drobotics.ghost.io) software
 - Next, connect the pc with the board via a USB cable connected by the USB quicklink port.
 - Inside RDK Studio, signin with your account and click into <Device & Development> tab and select <Remote Desktop>
 
-**Commands:**
+## 2.Setting up SSH
 
+- In OS desktop, select Applications>RDK Configuration, there a terminal window will popup.
+- In the terminal window, use the arrow keys to select <I1 SSH>, press enter and enable the SSH service
+- Finally, exit the terminal window and use the cmd or powershell from your laptop to ssh to the board using this command:
+  
 ```bash
-[Your connection and verification commands]
+ssh root@<<Your board IP>>
 ```
 
 **Evidence:**
 
-![SSH connection](evidence/[ssh-evidence].png)
+[SSH Connection](evidence/Flash_ssh.log)
 
-### 3. Install Dependencies
+### 4. Configure Hardware/Camera
 
-[Explain how to install the necessary packages, SDKs and libraries.]
+For this demo project, configuring hardware is really simple. In fact, because in this project we use only the webcam, all we need to do is to connect it and capture images and videos from the webcam using ffmpeg using the following steps:
 
-**Commands:**
-
+- 1.For capturing videos, do:
+  
 ```bash
-[Your dependency installation commands]
+sudo apt install v4l-utils
+v4l2-ctl --list-devices
+ffplay /dev/video0   ##replace /video0 with whatever /video[num] your webcam have
 ```
 
-### 4. Configure Hardware
-
-[Explain how to connect and configure cameras, sensors, actuators and peripherals.]
-
-**Commands:**
+- 2.For taking and saving pictures, do:
 
 ```bash
-[Your hardware configuration commands]
+ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -vframes 1 <<Your directory path>>/photo.jpg
 ```
 
 **Evidence:**
 
-![Hardware configuration](evidence/[hardware-configuration].png)
+![Webcam Image](evidence/Sensor.png)
 
-## Running the Project
+## Running the Demo
 
-### 1. Start the Application
+### 1. Navigation
 
-[Explain how to start the main application.]
-
-```bash
-[Your execution command]
-```
-
-### 2. Run the AI Workload
-
-[Explain how to load the model and execute inference on the RDK X5.]
+Navigate to the /app/pydev_demo/ and select the demo as of your uses. For this exampke I'll be using pose detection:
 
 ```bash
-[Your AI execution command]
+cd /app/pydev_demo/04_pose_sample/01_ultralytics_yolo11_pose/
 ```
 
-### 3. Verify the Output
+### 2. Run the Demo
 
-[Explain what successful execution looks like and how to check the results.]
+Run the demo by using python:
 
 ```bash
-[Your verification commands]
+python ultralytics_yolo11_pose.py
 ```
 
-**Expected output:**
+### 3. Model Output
 
-```text
-[An actual example of successful output]
-```
+## Original.png
+![AI model output](evidence/Yolo11_original.jpg)
 
-**Execution evidence:**
-
-![Application output](evidence/[execution-evidence].png)
-
-## AI Model and Processing
-
-### Model Information
-
-| Property | Description |
-|---|---|
-| Model name | [Model name] |
-| Model source | [Official source / URL] |
-| Model architecture | [Architecture] |
-| Input resolution | [Resolution] |
-| Input format | [Format] |
-| Runtime | [Runtime] |
-| Execution device | [BPU / CPU / Other] |
-| Model file | [Filename] |
-
-### AI Processing Pipeline
-
-[Explain how input data becomes a model prediction.]
-
-### Model Output
-
-![AI model output](evidence/[ai-output].jpg)
+## Result
+![AI model output](evidence/Yolo11_demo.jpg)
 
 **Observed result:**
 
-[Describe what the model successfully detected, classified, recognized or generated.]
+The model successfully identifies the people walking on the crosswalk.
 
-## Sensors and Actuators
 
-### Sensor Demonstration
-
-**Sensor:** [Sensor name and model]
-
-**Interface:** [USB / MIPI / I2C / SPI / GPIO / Other]
-
-**Purpose:** [What information it provides.]
-
-**Test procedure:**
-
-[Explain how you tested the sensor.]
-
-**Commands:**
-
-```bash
-[Your sensor test commands]
-```
-
-**Evidence:**
-
-![Sensor demonstration](evidence/[sensor-evidence].png)
-
-### Actuator Demonstration
-
-[Describe your motor, servo, GPIO output or other actuator, if applicable.]
-
-**Evidence:**
-
-![Actuator demonstration](evidence/[actuator-evidence].png)
-
-[Write Not implemented yet if you do not have an actuator demonstration.]
 
 ## Results and Verification
 
@@ -312,24 +251,18 @@ Only include measurements you have actually taken.
 
 | Metric | Measurement | Test Conditions |
 |---|---|---|
-| Inference latency | [Value / Not measured] | [Conditions] |
-| Inference throughput | [Value / Not measured] | [Conditions] |
-| CPU utilization | [Value / Not measured] | [Conditions] |
-| BPU utilization | [Value / Not measured] | [Conditions] |
-| Memory usage | [Value / Not measured] | [Conditions] |
-| Temperature | [Value / Not measured] | [Conditions] |
-| Power consumption | [Value / Not measured] | [Conditions] |
-
-**Measurement methodology:**
-
-[Explain how you collected the measurements, the duration, the number of tests and the measurement tools.]
+| Inference latency | N/A | - |
+| Inference throughput | N/A | - |
+| CPU utilization | N/A | - |
+| BPU utilization | N/A | - |
+| Memory usage | N/A | - |
+| Temperature | N/A | - |
+| Power consumption | N/A] | - |
 
 ### Additional Evidence
 
-- [Screenshot or log 1](evidence/[file-1])
-- [Screenshot or log 2](evidence/[file-2])
-- [Demonstration video](YOUR_VIDEO_LINK)
-- [Detailed experiment report](YOUR_DOCUMENTATION_LINK)
+- [Demonstration video](YOUR_VIDEO_LINK) - #todo
+- [Detailed experiment report](YOUR_DOCUMENTATION_LINK) - #todo
 
 ## Troubleshooting
 
@@ -363,48 +296,17 @@ Only include measurements you have actually taken.
 
 ## Known Limitations
 
-- [Current limitation 1]
-- [Current limitation 2]
-- [Current limitation 3]
+- Remote Desktop speed
 
 ## Future Development
-
-### Planned Improvements
-
-- [Improvement 1]
-- [Improvement 2]
-- [Improvement 3]
 
 ### Next Challenge Stages
 
 | Stage | Planned development |
 |---|---|
-| Stage 1 — Ignite | [Initial hardware and AI demonstration] |
-| Stage 2 — Build | [Further development and integration] |
-| Stage 3 — Launch | [Complete project demonstration and evaluation] |
-
-Update this section as your project develops.
-
-## Reproducibility
-
-**Tested hardware:** [RDK X5 configuration]
-
-**Tested software:** [Operating system and software versions]
-
-**Reproduction procedure:**
-
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
-4. [Step 4]
-
-**Expected result:** [Describe the result another developer should observe.]
-
-## Attribution
-
-[List external code, examples, pretrained models, datasets, SDKs and other resources used.]
-
-[Preserve original copyright notices and third-party license requirements.]
+| Stage 1 — Ignite | Initial hardware and AI demonstration |
+| Stage 2 — Build | Further development and integration |
+| Stage 3 — Launch | Complete project demonstration and evaluation |
 
 ## License
 
@@ -420,8 +322,8 @@ Third-party components remain subject to their respective licenses.
 
 **Organizer:** D-Robotics
 
-**Current stage:** [Stage number and name]
+**Current stage:** Stage 1
 
 - [Official Challenge Repository](https://github.com/D-Robotics/Robotics-Dream-Keeper-Challenge-Winter)
 - [Project Showcase](YOUR_SHOWCASE_PR_URL)
-- [Community Update](YOUR_DISCORD_MESSAGE_LINK)
+- [Community Update](https://discord.com/channels/1300358874280230994/1503706103752429618/threads/1565947368782831757)
