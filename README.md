@@ -257,7 +257,7 @@ Only include measurements you have actually taken.
 | BPU utilization | N/A | - |
 | Memory usage | N/A | - |
 | Temperature | N/A | - |
-| Power consumption | N/A] | - |
+| Power consumption | N/A | - |
 
 ### Additional Evidence
 
