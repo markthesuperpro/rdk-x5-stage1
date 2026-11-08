@@ -1,7 +1,6 @@
 # rdk-x5-stage1 — RDK X5 Robotics Project
-Robotics Dream Keeper Challenge — Winter 2026
 
-**Robotics Dream Keeper Challenge 2026 Winter**
+**Robotics Dream Keeper Challenge — Winter 2026**
 
 - **Participant:** Mark
 - **Project:** rdk-x5-stage1-demo
@@ -49,11 +48,18 @@ Our project approach is to first understand foundational part of our hardware an
 
 ### Hardware Setup
 
-![Hardware setup](evidence/[hardware-setup-image].jpg)
+![Hardware setup](evidence/hardware.png)
+*stage 1*
 
 **Connection details:**
+| Component | Connection | Purpose |
+|---|---|---|
+| Development board | USB Port+Cable | Remote desktop |
+| SD card | SD card port | System storage and Boot Firmware |
+| USB Webcam | USB connection | Video Capture |
+| USB power supply cable | USB cable + Adapter | Charging RDK |
+| Development laptop | - | Programming and Screen |
 
-[Explain how your camera, sensors, actuators and other hardware are connected.]
 
 ## Tested Software Environment
 
@@ -61,21 +67,17 @@ Record the actual versions running on your tested hardware.
 
 | Component | Version / Configuration |
 |---|---|
-| RDK OS | [Version] |
-| Ubuntu | [Version] |
-| Linux kernel | [Version] |
-| CPU architecture | [Architecture] |
-| Python | [Version] |
-| ROS 2 | [Version / Not used] |
-| OpenCV | [Version / Not used] |
-| AI framework | [Version] |
-| BPU Platform | [Version / Not used] |
-| DNN Runtime / HBRT | [Versions / Not used] |
-| Other dependencies | [Versions] |
+| RDK OS | [RDK OS v3.5.0 Image](https://archive.d-robotics.cc/downloads/os_images/rdk_x5/rdk_os_3.5.0-2026-4-9/rdk-x5-ubuntu22-preinstalled-desktop-3.5.0-arm64.img.xz) |
+| Ubuntu | Ubuntu 22.04.5 LTS (GNU/Linux 6.1.83 aarch64) |
+| Linux kernel | v6.1.83 |
+| CPU architecture | aarch64 |
+| Python | 3.15.2 |
+| ROS 2 | Not used yet |
+| Other dependencies | ffmpeg |
 
 **Environment verification evidence:**
 
-![System information](evidence/[system-information].png)
+![System information](evidence/Flash_ssh.log)
 
 ## Project Architecture
 
