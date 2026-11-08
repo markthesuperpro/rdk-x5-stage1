@@ -239,13 +239,13 @@ Record actual observations from your experiments.
 
 | Test | Configuration | Actual Result | Status |
 |---|---|---|---|
-| System boot | [Configuration] | [Observed result] | [Status] |
-| Network / SSH | [Configuration] | [Observed result] | [Status] |
-| Sensor | [Configuration] | [Observed result] | [Status] |
-| AI inference | [Configuration] | [Observed result] | [Status] |
-| Actuator | [Configuration] | [Observed result] | [Status] |
+| System boot | N/A | System boot successfully | ok. |
+| Network / SSH | Enabled | Successful SSH | working |
+| Sensor | Webcam connected | Can transmit Photo and Video | working |
+| AI inference (#TODO) | N/A | N/A | N/A |
+| Actuator (#TODO) | N/A | N/A | N/A |
 
-### Performance Measurements
+### Performance Measurements #TODO
 
 Only include measurements you have actually taken.
 
@@ -266,33 +266,25 @@ Only include measurements you have actually taken.
 
 ## Troubleshooting
 
-### [Problem 1]
+### SSH not working
 
 **Symptoms:**
 
-[What happens?]
-
-**Possible cause:**
-
-[What caused the problem?]
+SSH can't connect
 
 **Solution:**
 
-[How did you resolve it?]
+change sunrise@ to root@
 
-### [Problem 2]
+### Can't connect to board
 
 **Symptoms:**
 
-[What happens?]
-
-**Possible cause:**
-
-[What caused the problem?]
+Can't find board ip
 
 **Solution:**
 
-[How did you resolve it?]
+Restart and check which IP newly appear, that is board ip.
 
 ## Known Limitations
 
@@ -310,7 +302,7 @@ Only include measurements you have actually taken.
 
 ## License
 
-This project's original materials are licensed under [Your License].
+This project's original materials are licensed under MIT License.
 
 See [LICENSE](LICENSE) for details.
 
