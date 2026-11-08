@@ -55,7 +55,7 @@ Our project approach is to first understand foundational part of our hardware an
 | Component | Connection | Purpose |
 |---|---|---|
 | Development board | USB Port+Cable | Remote desktop |
-| SD card | SD card port | System storage and Boot Firmware |
+| MicroSD card | MicroSD card port | System storage and Boot Firmware |
 | USB Webcam | USB connection | Video Capture |
 | USB power supply cable | USB cable + Adapter | Charging RDK |
 | Development laptop | - | Programming and Screen |
@@ -75,119 +75,93 @@ Record the actual versions running on your tested hardware.
 | ROS 2 | Not used yet |
 | Other dependencies | ffmpeg |
 
-**Environment verification evidence:**
-
-![System information](evidence/Flash_ssh.log)
-
 ## Project Architecture
 
-Explain how the hardware and software components communicate.
+Our RDK x5 board boot up with RDK os v3.5.0 via the MicroSD card. We then remote desktop to our board via USB 2.0 Quicklink. This way we can configure the board's wifi connection, thus allowing us to ssh to it via the connected wifi endpoint. After that, we attach USB webcam via the USB port and capture video and image using ffmpeg. We also tried experimenting the /app/ demo by using python to run the example program and input our captured image as parameter.  
 
 ### Architecture Diagram
 
 ```text
-[Sensor / Camera]
+[USB Camera/Image online]
         |
         v
-[Data Acquisition]
-        |
-        v
-[Processing / AI Model]
+[Demo /app/ programs]
         |
         v
 [RDK X5 BPU / CPU]
         |
         v
-[Decision / Output]
+[Image Output]
         |
         v
-[Actuator / Display / Result]
+[FFmpeg Display / Result]
 ```
-
-Replace the example components with your actual implementation.
 
 ### Architecture Explanation
 
-1. **Input:** [Where the data comes from.]
-2. **Processing:** [How the data is processed.]
-3. **Inference / Logic:** [How your model or algorithm works.]
-4. **Output:** [What happens after processing.]
-5. **Communication:** [How the components communicate.]
+1. **Input:** Image captured from either the USB Camera or the web
+2. **Inference / Logic:** Data is processed through the demo programs
+3. **Output:** Displayed Via FFmpeg in the terminal
 
 ## Repository Structure
 
 ```text
-your-project/
+rdk-x5-stage1/
 |
++-- .gitignore
 +-- README.md
 +-- LICENSE
 +-- requirements.txt
 |
 +-- src/
-|   +-- [your-main-script].py
-|   +-- [other-source-files]
-|
-+-- models/
-|   +-- [model-files-or-download-instructions]
-|
-+-- config/
-|   +-- [configuration-files]
-|
 +-- docs/
-|   +-- [documentation]
+|   +-- architecture/
+|   +-- setup/
 |
 +-- evidence/
-    +-- [hardware-setup].jpg
-    +-- [system-information].png
-    +-- [sensor-test].png
-    +-- [ai-result].jpg
-    +-- [execution-log].log
+    +-- Flash_ssh.log
+    +-- Sensor.png
+    +-- Yolo11_demo.png
+    +-- Yolo11_original.png
+    +-- hardware.png
 ```
-
-Only include directories that actually exist in your repository.
 
 ## Prerequisites and Dependencies
 
 ### Hardware Requirements
 
-- [Required RDK X5 hardware]
-- [Required sensors and actuators]
-- [Other necessary equipment]
+- RDK X5 hardware
+- USB webcam
+- microSD card and USB MicroSD card reader
+- 2x USB cables + Adapters
 
 ### Software Requirements
 
-- [Operating system]
-- [Programming language and version]
-- [Required frameworks]
-- [Required SDKs and runtimes]
+- [RDK OS v3.5.0 Image](https://archive.d-robotics.cc/downloads/os_images/rdk_x5/rdk_os_3.5.0-2026-4-9/rdk-x5-ubuntu22-preinstalled-desktop-3.5.0-arm64.img.xz)
+- Python 3.15.2
 
 ### Dependencies
 
 | Dependency | Version | Purpose |
 |---|---|---|
-| [Package 1] | [Version] | [Purpose] |
-| [Package 2] | [Version] | [Purpose] |
-| [Package 3] | [Version] | [Purpose] |
+| FFmpeg | 9.0.2 | Image/Video capture |
 
 ## Installation and Setup
 
 ### 1. Prepare the RDK X5
 
-[Explain how to flash the system image, boot the board and complete initial configuration.]
+- Download system image via [RDK OS v3.5.0 Image](https://archive.d-robotics.cc/downloads/os_images/rdk_x5/rdk_os_3.5.0-2026-4-9/rdk-x5-ubuntu22-preinstalled-desktop-3.5.0-arm64.img.xz)
+- Download [Rufus](https://rufus.ie/en/)
 
-**Commands:**
-
-```bash
-[Your setup commands]
-```
-
-**Evidence:**
-
-![RDK X5 setup](evidence/[setup-evidence].png)
+- 1.Boot up rufus and flash the system image downloaded into the MicroSD card attached via the USB MicroSD card reader.
+- 2.Disconnect the card reader and put the MicroSD card into the RDK x5 board's microSD card slot.
+- 3.Boot up RDK board via USB charging port using a USB adapter (+cable).
 
 ### 2. Connect to the RDK X5
 
-[Explain network configuration and SSH connection from your development computer.]
+- After booting up the board with RDK os successfully, proceed with [RDK Studio](https://developer.d-robotics.cc/en/rdkstudio?ref=drobotics.ghost.io) software
+- Next, connect the pc with the board via a USB cable connected by the USB quicklink port.
+- Inside RDK Studio, signin with your account and click into <Device & Development> tab and select <Remote Desktop>
 
 **Commands:**
 
