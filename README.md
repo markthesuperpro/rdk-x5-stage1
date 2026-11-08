@@ -222,10 +222,10 @@ python ultralytics_yolo11_pose.py
 ### 3. Model Output
 
 ## Original.png
-![AI model output](evidence/Yolo11_original.jpg)
+![AI model output](evidence/Yolo11_original.png)
 
 ## Result
-![AI model output](evidence/Yolo11_demo.jpg)
+![AI model output](evidence/Yolo11_demo.png)
 
 **Observed result:**
 
