@@ -1,0 +1,42 @@
+Microsoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>ssh root@192.168.127.100
+ssh: connect to host 192.168.127.100 port 22: Connection timed out
+
+C:\Windows\System32>ssh root@192.168.15.65
+The authenticity of host '192.168.15.65 (192.168.15.65)' can't be established.
+ED25519 key fingerprint is SHA256:K8oyEoddaZ4keNu39exAqMJLDEcncgoQGcRPQ898Bb4.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? Yes
+Warning: Permanently added '192.168.15.65' (ED25519) to the list of known hosts.
+root@192.168.15.65's password:
+Permission denied, please try again.
+root@192.168.15.65's password:
+Permission denied, please try again.
+root@192.168.15.65's password:
+root@192.168.15.65: Permission denied (publickey,password).
+
+C:\Windows\System32>ssh root@192.168.15.65
+root@192.168.15.65's password:
+Permission denied, please try again.
+root@192.168.15.65's password:
+Permission denied, please try again.
+root@192.168.15.65's password:
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.1.83 aarch64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+6 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
